@@ -72,16 +72,18 @@ class CountdownTimer {
 
 const timer = new CountdownTimer({
   selector: "#timer-1",
-  targetDate: new Date("04/01/2021"),
+  targetDate: new Date("11/04/2021"),
 });
 
 timer.start();
 
 function updateClockface(time) {
-  const days = Math.floor(time / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const mins = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
-  const secs = Math.floor((time % (1000 * 60)) / 1000);
+  const days = pad(Math.floor(time / (1000 * 60 * 60 * 24)));
+  const hours = pad(
+    Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+  );
+  const mins = pad(Math.floor((time % (1000 * 60 * 60)) / (1000 * 60)));
+  const secs = pad(Math.floor((time % (1000 * 60)) / 1000));
 
   refs.days.textContent = `${days}`;
   refs.hours.textContent = `${hours}`;
